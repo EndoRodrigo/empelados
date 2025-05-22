@@ -20,5 +20,5 @@ public class Empleado {
     private Integer id;
     String nombre;
     String departamento;
-    String sueldo;
+    Double sueldo;
 }
