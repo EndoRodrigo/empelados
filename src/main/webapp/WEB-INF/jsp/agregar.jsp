@@ -9,8 +9,8 @@
   <form action="${urlAgregar}" modelAttribute="empleadoForma" method="post">
     <div class="mb-3">
       <label for="nombreEmpleado" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="nombreEmpleado"
-             name="nombreEmpleado" required="true">
+      <input type="text" class="form-control" id="nombre"
+             name="nombre" required="true">
     </div>
     <div class="mb-3">
       <label for="departamento" class="form-label">Departamento</label>

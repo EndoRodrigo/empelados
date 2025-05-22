@@ -3,11 +3,13 @@ package com.endorodrigo.empleados.controller;
 import com.endorodrigo.empleados.model.Empleado;
 import com.endorodrigo.empleados.repository.EmpleadoRepository;
 import com.endorodrigo.empleados.service.EmpleadoService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,6 +27,19 @@ public class IndexController {
         List<Empleado> empleados = empleadoService.findAll();
         empleados.forEach((empleado) -> logger.info(empleado.toString()));
         model.addAttribute("employed", empleados);
-        return "index";
+        return "index"; //index.jsp
+    }
+
+    @RequestMapping(value = "/agregar", method = RequestMethod.GET)
+    public String mostrarAgregar(){
+        return "agregar"; //agregar.jsp
+    }
+
+    //empleadoForma contiene la informacion del formulario
+    @RequestMapping(value = "/agregar", method = RequestMethod.POST)
+    public String agregar(@ModelAttribute("empleadoForma")  Empleado empleadoForma, HttpServletRequest request) {
+        logger.info(empleadoForma.toString());
+        empleadoService.save(empleadoForma);
+        return "redirect:/";
     }
 }
