@@ -6,12 +6,12 @@
     <h3>Editar Empleado</h3>
   </div>
   <form action="${urlEditar}" modelAttribute="empleadoForma" method="post">
-    <input type="hidden" name="idEmpleado" value="${empleado.idEmpleado}"/>
+    <input type="hidden" name="id" value="${empleado.id}"/>
     <div class="mb-3">
       <label for="nombreEmpleado" class="form-label">Nombre</label>
       <input type="text" class="form-control" id="nombreEmpleado"
-             name="nombreEmpleado" required="true"
-             value="${empleado.nombreEmpleado}">
+             name="nombre" required="true"
+             value="${empleado.nombre}">
     </div>
     <div class="mb-3">
       <label for="departamento" class="form-label">Departamento</label>

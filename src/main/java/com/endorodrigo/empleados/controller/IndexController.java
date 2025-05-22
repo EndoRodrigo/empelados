@@ -35,10 +35,25 @@ public class IndexController {
         return "agregar"; //agregar.jsp
     }
 
+    @RequestMapping(value = "/editar", method = RequestMethod.GET)
+    public String mostrarEditar(@ModelAttribute("empleadoForma")  Empleado empleadoForma, ModelMap model) {
+        logger.info(empleadoForma.toString());
+        Empleado empleado = empleadoService.findById(empleadoForma.getId());
+        model.put("empleado", empleado);
+        return "editar"; //editar.jsp
+    }
+
     //empleadoForma contiene la informacion del formulario
     @RequestMapping(value = "/agregar", method = RequestMethod.POST)
-    public String agregar(@ModelAttribute("empleadoForma")  Empleado empleadoForma, HttpServletRequest request) {
+    public String agregar(@ModelAttribute("empleadoForma")  Empleado empleadoForma) {
         logger.info(empleadoForma.toString());
+        empleadoService.save(empleadoForma);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/editar", method = RequestMethod.POST)
+    public String editar(@ModelAttribute("empleadoForma")  Empleado empleadoForma) {
+        logger.info("new employed "+ empleadoForma.toString());
         empleadoService.save(empleadoForma);
         return "redirect:/";
     }
