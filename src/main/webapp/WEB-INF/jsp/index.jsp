@@ -40,7 +40,7 @@
                            class="btn btn-warning btn-sm me-3">Editar</a>
                         <c:set var="urlEliminar">
                             <c:url value="${application.contextPath}/eliminar">
-                                <c:param name="idEmpleado"
+                                <c:param name="id"
                                          value="${empleado.id}"/>
                             </c:url>
                         </c:set>

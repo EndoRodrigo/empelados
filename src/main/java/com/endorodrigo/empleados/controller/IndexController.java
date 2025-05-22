@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -55,6 +56,15 @@ public class IndexController {
     public String editar(@ModelAttribute("empleadoForma")  Empleado empleadoForma) {
         logger.info("new employed "+ empleadoForma.toString());
         empleadoService.save(empleadoForma);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/eliminar", method = RequestMethod.GET)
+    public String eliminar(@RequestParam int id) {
+        logger.info("eliminar "+ id);
+        Empleado empleado = empleadoService.findById(id);
+        logger.info("delate employed "+ empleado);
+        empleadoService.delete(id);
         return "redirect:/";
     }
 }

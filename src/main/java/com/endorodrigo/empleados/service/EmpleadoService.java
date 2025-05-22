@@ -27,4 +27,11 @@ public class EmpleadoService implements IEmpleadoService{
     public Empleado save(Empleado empleado) {
         return empleadoRepository.save(empleado);
     }
+
+    @Override
+    public void delete(Integer id) {
+        empleadoRepository.deleteById(id);
+    }
+
+
 }
